@@ -19,23 +19,32 @@
     display: none;
     width: 100vw;
     height: 100vh;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* pionowe wyśrodkowanie */
+    align-items: center;     /* poziome wyśrodkowanie */
     flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
     text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
   }
 
   .strona.active {
     display: flex; /* pokaz aktywną stronę */
   }
 
-  .kadr img {
+  .kadr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 90%;
     max-height: 80%;
     border: 3px solid white;
     background: rgba(0,0,0,0.3);
+  }
+
+  .kadr img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
   }
 
   .opis {
@@ -82,21 +91,20 @@
 let currentPage = 0;
 const strony = document.querySelectorAll('.strona');
 
-// pokaz stronę o danym indeksie
 function showPage(index) {
   strony.forEach((s, i) => {
     s.classList.toggle('active', i === index);
   });
 }
 
-// kliknięcie w ekran → następna
+// Kliknięcie w ekran → następna strona
 document.body.addEventListener('click', () => {
   currentPage++;
   if (currentPage >= strony.length) currentPage = 0;
   showPage(currentPage);
 });
 
-// strzałki klawiatury
+// Strzałki klawiatury
 document.addEventListener('keydown', (e) => {
   if (e.key === "ArrowRight") {
     currentPage++;
