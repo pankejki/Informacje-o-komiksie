@@ -1,1 +1,1 @@
-# Informacje-o-komiksie
+# <b>Informacje-o-komiksie</b>
