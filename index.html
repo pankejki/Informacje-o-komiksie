@@ -1,16 +1,137 @@
-<html>
- <head><b>wIEWLKA DWÓJKA</b></head>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<title>Pomiędzy</title>
 
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
+    body {
+        margin: 0;
+        font-family: monospace;
+        background: white;
+        color: black;
+        line-height: 1.6;
+    }
 
+    .page {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 80px 20px;
+    }
 
+    .panel {
+        border: 2px solid black;
+        padding: 40px;
+        margin: 120px 0;
+        min-height: 200px;
+        position: relative;
+    }
 
+    .panel.empty {
+        border: none;
+        min-height: 300px;
+    }
 
+    .caption {
+        margin-top: 20px;
+        font-size: 14px;
+    }
 
+    .speech {
+        border: 2px solid black;
+        padding: 10px 16px;
+        display: inline-block;
+        margin-top: 20px;
+    }
 
- 
+    .glitch {
+        transform: rotate(-2deg);
+    }
+
+    .fade {
+        opacity: 0.2;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .small {
+        font-size: 12px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- SCENA 1 -->
+    <div class="panel center">
+        <div>[ obraz ]</div>
+        <div class="caption">To jest obraz.</div>
+    </div>
+
+    <!-- przerwa -->
+    <div class="panel empty"></div>
+
+    <!-- SCENA 2 -->
+    <div class="panel center">
+        <div>[ obraz ]</div>
+        <div class="caption">To też jest obraz.</div>
+    </div>
+
+    <!-- SCENA 3 -->
+    <div class="panel center">
+        <div>[ obraz ] &nbsp;&nbsp; [ obraz ]</div>
+        <div class="caption">Co się stało pomiędzy?</div>
+    </div>
+
+    <!-- SCENA 4 -->
+    <div class="panel">
+        <div>[ spokojny obraz ]</div>
+        <div class="speech">To nie ma sensu.</div>
+        <div class="caption small">Tekst nie pomaga. Tekst przeszkadza.</div>
+    </div>
+
+    <!-- SCENA 5 -->
+    <div class="panel glitch">
+        <div>[ kadr który się krzywi ]</div>
+        <div class="caption">Kto ustala kolejność?</div>
+    </div>
+
+    <!-- SCENA 6 -->
+    <div class="panel fade center">
+        <div>[ prawie nic ]</div>
+        <div class="caption">Im mniej widzisz, tym więcej robisz.</div>
+    </div>
+
+    <!-- SCENA 7 -->
+    <div class="panel center">
+        <div>[ bohater patrzy na ciebie ]</div>
+        <div class="speech">Jeśli to rozumiesz, to nie dlatego, że ci wytłumaczyłem.</div>
+    </div>
+
+</div>
+
+<script>
+    // małe „psucie się” przy kliknięciu
+    document.querySelectorAll('.panel').forEach(panel => {
+        panel.addEventListener('click', () => {
+            panel.style.transform =
+                'rotate(' + (Math.random() * 6 - 3) + 'deg)';
+        });
+    });
+</script>
+
+</body>
 </html>
-
 
 
 
