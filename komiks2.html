@@ -4,99 +4,112 @@
 <meta charset="UTF-8">
 <title>Komiks 2 – Kryształowi ludzie i powrót króla</title>
 <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: Arial, sans-serif;
-        background-color: #808080; /* szare tło */
-        color: white;
-        scroll-behavior: smooth; /* płynne przewijanie */
-    }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #808080; /* szare tło */
+    color: white;
+    overflow: hidden; /* wyłącza przewijanie strony */
+    cursor: pointer; /* kliknij gdziekolwiek */
+  }
 
-    h1 {
-        font-size: 36px;
-        text-align: center;
-        margin: 20px 0;
-        text-shadow: 2px 2px 4px #000;
-    }
+  .strona {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+  }
 
-    .strona {
-        min-height: 100vh; /* każda strona = wysokość okna przeglądarki */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        box-sizing: border-box;
-    }
+  .strona.active {
+    display: flex; /* pokaz aktywną stronę */
+  }
 
-    .kadr {
-        border: 3px solid white;
-        max-width: 600px;
-        width: 90%;
-        padding: 20px;
-        background: rgba(0,0,0,0.3);
-        margin-bottom: 20px;
-    }
+  .kadr img {
+    max-width: 90%;
+    max-height: 80%;
+    border: 3px solid white;
+    background: rgba(0,0,0,0.3);
+  }
 
-    .kadr img {
-        width: 100%;
-        display: block;
-    }
+  .opis {
+    margin-top: 12px;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px #000;
+  }
 
-    .opis {
-        margin-top: 10px;
-        font-size: 18px;
-    }
-
-    .nawigacja {
-        margin-top: 30px;
-    }
-
-    .nawigacja a {
-        color: white;
-        text-decoration: underline;
-        margin: 0 10px;
-    }
+  .instrukcja {
+    position: absolute;
+    bottom: 20px;
+    font-size: 14px;
+    opacity: 0.6;
+  }
 </style>
 </head>
 <body>
 
-<!-- STRONA 1 -->
-<div class="strona" id="strona1">
-    <h1>Komiks 2 – Kryształowi ludzie i powrót króla</h1>
-    <div class="kadr">
-        <img src="https://comicsdb.cz/pics/11325/b_c11325-1-1739281331.jpg" alt="Kadr 1">
-        <div class="opis">Kadr 1 – początek przygody</div>
-    </div>
-    <div class="nawigacja">
-        <a href="#strona2">→ Następna strona</a>
-    </div>
+<!-- STRONY -->
+<div class="strona active" id="strona1">
+  <div class="kadr">
+    <img src="https://comicsdb.cz/pics/11325/b_c11325-1-1739281331.jpg" alt="Kadr 1">
+  </div>
+  <div class="opis">Kadr 1 – Tajemniczy początek</div>
 </div>
 
-<!-- STRONA 2 -->
 <div class="strona" id="strona2">
-    <div class="kadr">
-        <img src="https://comicsdb.cz/pics/11325/b_c11325-2-1739281331.jpg" alt="Kadr 2">
-        <div class="opis">Kadr 2 – tajemnicze wydarzenie</div>
-    </div>
-    <div class="nawigacja">
-        <a href="#strona1">← Poprzednia strona</a>
-        <a href="#strona3">→ Następna strona</a>
-    </div>
+  <div class="kadr">
+    <img src="https://comicsdb.cz/pics/11325/b_c11325-2-1739281331.jpg" alt="Kadr 2">
+  </div>
+  <div class="opis">Kadr 2 – Kolejny ruch historii</div>
 </div>
 
-<!-- STRONA 3 -->
 <div class="strona" id="strona3">
-    <div class="kadr">
-        <img src="https://comicsdb.cz/pics/10861/b_c10861-3-1717486076.jpg">
-        <div class="opis">Kadr 3 – bohater zastanawia się co dalej</div>
-    </div>
-    <div class="nawigacja">
-        <a href="#strona2">← Poprzednia strona</a>
-    </div>
+  <div class="kadr">
+    <img src="https://comicsdb.cz/pics/10861/b_c10861-3-1717486076.jpg" alt="Kadr 3">
+  </div>
+  <div class="opis">Kadr 3 – Finał przygody</div>
 </div>
+
+<div class="instrukcja">Kliknij albo użyj strzałek ← →</div>
+
+<script>
+let currentPage = 0;
+const strony = document.querySelectorAll('.strona');
+
+// pokaz stronę o danym indeksie
+function showPage(index) {
+  strony.forEach((s, i) => {
+    s.classList.toggle('active', i === index);
+  });
+}
+
+// kliknięcie w ekran → następna
+document.body.addEventListener('click', () => {
+  currentPage++;
+  if (currentPage >= strony.length) currentPage = 0;
+  showPage(currentPage);
+});
+
+// strzałki klawiatury
+document.addEventListener('keydown', (e) => {
+  if (e.key === "ArrowRight") {
+    currentPage++;
+    if (currentPage >= strony.length) currentPage = 0;
+    showPage(currentPage);
+  }
+  if (e.key === "ArrowLeft") {
+    currentPage--;
+    if (currentPage < 0) currentPage = strony.length - 1;
+    showPage(currentPage);
+  }
+});
+</script>
 
 </body>
 </html>
