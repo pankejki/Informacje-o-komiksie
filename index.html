@@ -25,7 +25,27 @@
         }
         
         a:hover {
-            background-color: linear-gradient
+            /* Tęczowe tło */
+        background: linear-gradient(
+            90deg,
+            red,
+            orange,
+            yellow,
+            green,
+            blue,
+            indigo,
+            violet
+        );
+        background-size: 1400% 1400%; /* animacja */
+        animation: rainbow 15s ease infinite;
+    }
+
+    @keyframes rainbow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
         }
     </style>
 </head>
