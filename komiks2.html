@@ -4,76 +4,99 @@
 <meta charset="UTF-8">
 <title>Komiks 2 – Kryształowi ludzie i powrót króla</title>
 <style>
-    /* Tło całej strony */
     html, body {
         margin: 0;
         padding: 0;
         height: 100%;
-        background-color: #808080; /* szare tło */
-    }
-
-    body {
         font-family: Arial, sans-serif;
+        background-color: #808080; /* szare tło */
         color: white;
-        text-align: center;
-        padding: 50px;
+        scroll-behavior: smooth; /* płynne przewijanie */
     }
 
     h1 {
         font-size: 36px;
-        margin-bottom: 50px;
+        text-align: center;
+        margin: 20px 0;
         text-shadow: 2px 2px 4px #000;
+    }
+
+    .strona {
+        min-height: 100vh; /* każda strona = wysokość okna przeglądarki */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
     .kadr {
         border: 3px solid white;
-        padding: 20px;
         max-width: 600px;
-        margin: 40px auto;
-        background: rgba(0,0,0,0.3); /* półprzezroczyste tło dla zdjęcia */
+        width: 90%;
+        padding: 20px;
+        background: rgba(0,0,0,0.3);
+        margin-bottom: 20px;
     }
 
     .kadr img {
         width: 100%;
         display: block;
-        margin-bottom: 10px;
     }
 
     .opis {
-        font-size: 18px;
         margin-top: 10px;
+        font-size: 18px;
     }
 
-    a {
+    .nawigacja {
+        margin-top: 30px;
+    }
+
+    .nawigacja a {
         color: white;
         text-decoration: underline;
-        display: block;
-        text-align: center;
-        margin-top: 50px;
+        margin: 0 10px;
     }
-
 </style>
 </head>
 <body>
 
-<h1>Komiks 2 – Kryształowi ludzie i powrót króla</h1>
-
-<div class="kadr">
-    <img src="https://comicsdb.cz/pics/11325/b_c11325-1-1739281331.jpg">
-    <div class="opis">Kadr 1 – początek przygody</div>
+<!-- STRONA 1 -->
+<div class="strona" id="strona1">
+    <h1>Komiks 2 – Kryształowi ludzie i powrót króla</h1>
+    <div class="kadr">
+        <img src="https://comicsdb.cz/pics/11325/b_c11325-1-1739281331.jpg" alt="Kadr 1">
+        <div class="opis">Kadr 1 – początek przygody</div>
+    </div>
+    <div class="nawigacja">
+        <a href="#strona2">→ Następna strona</a>
+    </div>
 </div>
 
-<div class="kadr">
-    <img src="https://tuoscomics.com/image/cache/catalog/spongebob/spongebob-bajki-z-ananasu-z-prividami/spongebob-bajki-z-ananasu-z-prividami-3-660x1000.png">
-    <div class="opis">Kadr 2 – tajemnicze wydarzenie</div>
+<!-- STRONA 2 -->
+<div class="strona" id="strona2">
+    <div class="kadr">
+        <img src="https://comicsdb.cz/pics/11325/b_c11325-2-1739281331.jpg" alt="Kadr 2">
+        <div class="opis">Kadr 2 – tajemnicze wydarzenie</div>
+    </div>
+    <div class="nawigacja">
+        <a href="#strona1">← Poprzednia strona</a>
+        <a href="#strona3">→ Następna strona</a>
+    </div>
 </div>
 
-<div class="kadr">
-    <img src="https://comicsdb.cz/pics/11325/b_c11325-1-1739281331.jpg" alt="Miejsce na zdjęcie">
-    <div class="opis">Kadr 3 – bohater zastanawia się co dalej</div>
+<!-- STRONA 3 -->
+<div class="strona" id="strona3">
+    <div class="kadr">
+        <img src="https://comicsdb.cz/pics/10861/b_c10861-3-1717486076.jpg">
+        <div class="opis">Kadr 3 – bohater zastanawia się co dalej</div>
+    </div>
+    <div class="nawigacja">
+        <a href="#strona2">← Poprzednia strona</a>
+    </div>
 </div>
-
-<a href="index.html">← Powrót do strony głównej</a>
 
 </body>
 </html>
