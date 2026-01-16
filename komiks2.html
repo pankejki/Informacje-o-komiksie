@@ -5,18 +5,18 @@
 <title>Komiks 2 – Kryształowi ludzie i powrót króla</title>
 <style>
     body {
-        margin: 0;
+         margin: 0;
         font-family: Arial, sans-serif;
         color: white;
         text-align: center;
         padding: 50px;
-        
+        background-color: /* szare tło */
     }
 
     h1 {
         font-size: 36px;
         margin-bottom: 50px;
-        text-shadow: 2px 2px 4px #000;
+        text-shadow: 2px 2px 4px #000; /* cień dla lepszej czytelności */
     }
 
     .kadr {
@@ -24,7 +24,26 @@
         padding: 20px;
         max-width: 600px;
         margin: 40px auto;
-        background: rgba(0,0,0,0.3); /* półprzezroczyste tło dla zdjęcia, żeby było czytelne */
+        background: rgba(0,0,0,0.3); /* półprzezroczyste tło dla zdjęcia */
+    }
+
+    .kadr img {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .opis {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    a {
+        color: white;
+        text-decoration: underline;
+        display: block;
+        text-align: center;
+        margin-top: 50px;
     }
 
     .kadr img {
