@@ -1,68 +1,54 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8" />
-<title>Pomiędzy</title>
+<meta charset="UTF-8">
+<title>Czytasz</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
-
     body {
         margin: 0;
-        font-family: monospace;
-        background: white;
-        color: black;
-        line-height: 1.6;
+        background: #fff;
+        color: #000;
+        font-family: serif;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        height: 100vh;
     }
 
-    .page {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 80px 20px;
+    .strip {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        padding: 0 200px;
+        gap: 180px;
     }
 
-    .panel {
-        border: 2px solid black;
-        padding: 40px;
-        margin: 120px 0;
-        min-height: 200px;
-        position: relative;
-    }
-
-    .panel.empty {
-        border: none;
-        min-height: 300px;
-    }
-
-    .caption {
-        margin-top: 20px;
-        font-size: 14px;
-    }
-
-    .speech {
-        border: 2px solid black;
-        padding: 10px 16px;
-        display: inline-block;
-        margin-top: 20px;
-    }
-
-    .glitch {
-        transform: rotate(-2deg);
-    }
-
-    .fade {
-        opacity: 0.2;
-    }
-
-    .center {
+    .moment {
+        min-width: 300px;
+        max-width: 400px;
         text-align: center;
+        font-size: 20px;
+        line-height: 1.5;
+        opacity: 0.8;
+        transition: opacity 1s, transform 1s;
     }
 
-    .small {
-        font-size: 12px;
+    .moment:hover {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    .image {
+        border-bottom: 1px solid black;
+        margin-bottom: 20px;
+        padding-bottom: 40px;
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .quiet {
+        font-size: 14px;
+        opacity: 0.5;
     }
 
 </style>
@@ -70,65 +56,39 @@
 
 <body>
 
-<div class="page">
+<div class="strip">
 
-    <!-- SCENA 1 -->
-    <div class="panel center">
-        <div>[ obraz ]</div>
-        <div class="caption">To jest obraz.</div>
+    <div class="moment">
+        <div class="image">obraz</div>
+        <div>jeszcze nic się nie wydarzyło</div>
     </div>
 
-    <!-- przerwa -->
-    <div class="panel empty"></div>
-
-    <!-- SCENA 2 -->
-    <div class="panel center">
-        <div>[ obraz ]</div>
-        <div class="caption">To też jest obraz.</div>
+    <div class="moment">
+        <div class="image">ten sam obraz</div>
+        <div class="quiet">ale czas minął</div>
     </div>
 
-    <!-- SCENA 3 -->
-    <div class="panel center">
-        <div>[ obraz ] &nbsp;&nbsp; [ obraz ]</div>
-        <div class="caption">Co się stało pomiędzy?</div>
+    <div class="moment">
+        <div class="image">inny kadr</div>
+        <div>twoja głowa zrobiła resztę</div>
     </div>
 
-    <!-- SCENA 4 -->
-    <div class="panel">
-        <div>[ spokojny obraz ]</div>
-        <div class="speech">To nie ma sensu.</div>
-        <div class="caption small">Tekst nie pomaga. Tekst przeszkadza.</div>
+    <div class="moment">
+        <div class="image">tekst</div>
+        <div class="quiet">nie opisuje obrazu</div>
     </div>
 
-    <!-- SCENA 5 -->
-    <div class="panel glitch">
-        <div>[ kadr który się krzywi ]</div>
-        <div class="caption">Kto ustala kolejność?</div>
+    <div class="moment">
+        <div class="image">przerwa</div>
+        <div>to jest miejsce akcji</div>
     </div>
 
-    <!-- SCENA 6 -->
-    <div class="panel fade center">
-        <div>[ prawie nic ]</div>
-        <div class="caption">Im mniej widzisz, tym więcej robisz.</div>
-    </div>
-
-    <!-- SCENA 7 -->
-    <div class="panel center">
-        <div>[ bohater patrzy na ciebie ]</div>
-        <div class="speech">Jeśli to rozumiesz, to nie dlatego, że ci wytłumaczyłem.</div>
+    <div class="moment">
+        <div class="image">czytasz</div>
+        <div class="quiet">nawet jeśli tylko patrzysz</div>
     </div>
 
 </div>
-
-<script>
-    // małe „psucie się” przy kliknięciu
-    document.querySelectorAll('.panel').forEach(panel => {
-        panel.addEventListener('click', () => {
-            panel.style.transform =
-                'rotate(' + (Math.random() * 6 - 3) + 'deg)';
-        });
-    });
-</script>
 
 </body>
 </html>
